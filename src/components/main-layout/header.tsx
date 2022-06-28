@@ -121,23 +121,25 @@ export default function Header() {
             fontSize={"sm"}
             fontWeight={600}
             variant={"link"}
-            href={"#"}
+            href={"/signin"}
             display={{ base: "none", md: "flex" }}
           >
             Sign In
           </Button>
-          <Button
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"blue.400"}
-            _hover={{
-              bg: "blue.300",
-            }}
-            display={{ base: "none", md: "flex" }}
-          >
-            Sign Up
-          </Button>
+          <NextLink href="/signup" passHref>
+            <Button
+              fontSize={"sm"}
+              fontWeight={600}
+              color={"white"}
+              bg={"blue.400"}
+              _hover={{
+                bg: "blue.300",
+              }}
+              display={{ base: "none", md: "flex" }}
+            >
+              Sign Up
+            </Button>
+          </NextLink>
         </Stack>
       </Flex>
 

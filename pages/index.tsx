@@ -17,175 +17,128 @@ import {
   useBreakpointValue,
   Skeleton,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { useFetchProducts, useFetchCategories } from "./api/catalog";
-import { toast } from "react-toastify";
 
-const Homepage = () => {
-  const [filter, setFilter] = useState([]);
-  const {
-    data: products,
-    isLoading,
-    isError,
-    error,
-  } = useFetchProducts(filter);
+const defaultCategories = [
+  {
+    id: 1,
+    category_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+  },
+  {
+    id: 2,
+    category_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+  },
+  {
+    id: 3,
+    category_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+  },
+  {
+    id: 4,
+    category_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+  },
+  {
+    id: 5,
+    category_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+  },
+  {
+    id: 6,
+    category_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+  },
+];
 
-  if (isError) {
-    let errorMessage = "Error";
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(errorMessage);
-  }
+const defaultProducts = [
+  {
+    id: 1,
+    product_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+    tag: ["Bag"],
+  },
+  {
+    id: 2,
+    product_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+    tag: ["Bag"],
+  },
+  {
+    id: 3,
+    product_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+    tag: ["Bag"],
+  },
+  {
+    id: 4,
+    product_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+    tag: ["Bag"],
+  },
+  {
+    id: 5,
+    product_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+    tag: ["Bag"],
+  },
+  {
+    id: 6,
+    product_image: {
+      url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
+      alt: "Bag",
+    },
+    name: "Bag",
+    url: "/bag",
+    tag: ["Bag"],
+  },
+];
 
-  const {
-    data: categories,
-    isLoading: isCategoryLoading,
-    isError: isCategoryError,
-    error: errorCategory,
-  } = useFetchCategories([
-    {
-      key: "limit",
-      value: 6,
-    },
-  ]);
-
-  if (isError) {
-    let errorMessage = "Error";
-    if (error instanceof Error) {
-      errorMessage = error.message;
-    }
-    toast.error(errorMessage);
-  }
-
-  if (isCategoryError) {
-    let errorMessage = "Error";
-    if (errorCategory instanceof Error) {
-      errorMessage = errorCategory.message;
-    }
-    toast.error(errorMessage);
-  }
-
-  const defaultCategories = [
-    {
-      id: 1,
-      category_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-    },
-    {
-      id: 2,
-      category_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-    },
-    {
-      id: 3,
-      category_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-    },
-    {
-      id: 4,
-      category_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-    },
-    {
-      id: 5,
-      category_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-    },
-    {
-      id: 6,
-      category_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-    },
-  ];
-
-  const defaultProducts = [
-    {
-      id: 1,
-      product_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-      tag: ["Bag"],
-    },
-    {
-      id: 2,
-      product_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-      tag: ["Bag"],
-    },
-    {
-      id: 3,
-      product_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-      tag: ["Bag"],
-    },
-    {
-      id: 4,
-      product_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-      tag: ["Bag"],
-    },
-    {
-      id: 5,
-      product_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-      tag: ["Bag"],
-    },
-    {
-      id: 6,
-      product_image: {
-        url: "https://dcisb67tbokpv.cloudfront.net/default/bag.png",
-        alt: "Bag",
-      },
-      name: "Bag",
-      url: "/bag",
-      tag: ["Bag"],
-    },
-  ];
-
+const Homepage = ({ products, categories, query, loading }: any) => {
   return (
     <Layout title="" description="printcart catalog website.">
       <Container pt={15}>
@@ -204,19 +157,7 @@ const Homepage = () => {
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry
           </Text>
-          <SimpleGrid
-            columns={{ base: 1, sm: 2, md: 3 }}
-            gap={6}
-            p={2}
-            alignItems="stretch"
-            as="section"
-          >
-            {products &&
-              products.data.map((product: any) => (
-                <ProductCard data={product} key={product.id} />
-              ))}
-          </SimpleGrid>
-          {isLoading && (
+          {products && (
             <SimpleGrid
               columns={{ base: 1, sm: 2, md: 3 }}
               gap={6}
@@ -224,10 +165,8 @@ const Homepage = () => {
               alignItems="stretch"
               as="section"
             >
-              {defaultProducts.map((product: any) => (
-                <Skeleton key={product.id}>
-                  <ProductCard data={product} />
-                </Skeleton>
+              {products.data.map((product: any) => (
+                <ProductCard data={product} key={product.id} />
               ))}
             </SimpleGrid>
           )}
@@ -293,21 +232,6 @@ const Homepage = () => {
               ))}
             </SimpleGrid>
           )}
-          {isCategoryLoading && (
-            <SimpleGrid
-              columns={{ base: 1, sm: 2, md: 3 }}
-              gap={6}
-              p={2}
-              alignItems="stretch"
-              as="section"
-            >
-              {defaultCategories.map((category: any) => (
-                <Skeleton key={category.id}>
-                  <FeatureCategory data={category} />
-                </Skeleton>
-              ))}
-            </SimpleGrid>
-          )}
         </Scene>
       </Container>
       <Container maxW={"7xl"} py={10}>
@@ -316,5 +240,18 @@ const Homepage = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps({ query }: any) {
+  const baseUrl = "http://localhost:8001/v1/catalog";
+  const [requestProduct, requestCategory] = await Promise.all([
+    fetch(`${baseUrl}?limit=6`),
+    fetch(`${baseUrl}/categories`),
+  ]);
+  const [products, categories] = await Promise.all([
+    requestProduct.json(),
+    requestCategory.json(),
+  ]);
+  return { props: { products, categories, query } };
+}
 
 export default Homepage;

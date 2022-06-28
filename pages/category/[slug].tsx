@@ -106,7 +106,7 @@ const CategoryPage = ({ products, categories, tags, query, loading }: any) => {
         <LayeredNavigation categories={categories} tags={tags} query={query} />
         <Box>
           <Scene title="" align="end">
-            {!loading && (
+            {!loading && products && (
               <SimpleGrid
                 columns={{ base: 1, sm: 2, md: 3 }}
                 gap={6}
@@ -114,10 +114,9 @@ const CategoryPage = ({ products, categories, tags, query, loading }: any) => {
                 alignItems="stretch"
                 as="section"
               >
-                {products &&
-                  products.data.map((product: any) => (
-                    <ProductCard data={product} key={product.id} />
-                  ))}
+                {products.data.map((product: any) => (
+                  <ProductCard data={product} key={product.id} />
+                ))}
               </SimpleGrid>
             )}
 

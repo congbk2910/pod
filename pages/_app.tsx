@@ -9,7 +9,6 @@ import MainLayout from "@components/main-layout";
 import { AnimatePresence } from "framer-motion";
 import { CookiesProvider } from "react-cookie";
 import Router from "next/router";
-import { Spinner, Center } from "@chakra-ui/react";
 
 const queryClient = new QueryClient();
 
@@ -39,17 +38,11 @@ function App({ Component, pageProps, router }: AppProps) {
           <CookiesProvider>
             <MainLayout>
               <AnimatePresence exitBeforeEnter initial={true}>
-                {/* {loading ? (
-                  <Center h="50vh">
-                    <Spinner />
-                  </Center>
-                ) : ( */}
                 <Component
                   {...pageProps}
                   key={router.route}
                   loading={loading}
                 />
-                {/* )} */}
               </AnimatePresence>
             </MainLayout>
             <ReactQueryDevtools initialIsOpen={false} />

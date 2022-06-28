@@ -2,6 +2,7 @@ import { Container, ContainerProps, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
 import { NextSeo } from "next-seo";
+import axios from "axios";
 
 type LayoutProps = PropsWithChildren<{ title: string; description: string }>;
 

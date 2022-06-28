@@ -178,7 +178,7 @@ const SidebarContent = ({
         </>
       )}
       <strong>Shopping Options</strong>
-      <Accordion defaultIndex={[0]} allowMultiple>
+      <Accordion defaultIndex={[0, 1]} allowMultiple={true}>
         <AccordionItem>
           <h2>
             <AccordionButton>

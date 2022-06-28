@@ -1,15 +1,6 @@
-import {
-  HStack,
-  Link,
-  Text,
-  Image,
-  TextProps,
-  useColorModeValue as mode,
-} from "@chakra-ui/react";
+import { HStack, Link, Image } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import NextLink from "next/link";
-
-const MotionText = motion<TextProps>(Text);
 
 const Logo = () => {
   return (
@@ -24,9 +15,11 @@ const Logo = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <NextLink href="/" passHref>
-          <Image alt="Logo" src="/assets/images/logo.png" />
-        </NextLink>
+        <Link>
+          <NextLink href="/" passHref>
+            <Image alt="Logo" src="/assets/images/logo.png" />
+          </NextLink>
+        </Link>
       </motion.div>
     </HStack>
   );
