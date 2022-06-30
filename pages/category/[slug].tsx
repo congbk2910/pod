@@ -102,9 +102,27 @@ const CategoryPage = ({ products, categories, tags, query, loading }: any) => {
   const title = query.slug.charAt(0).toUpperCase() + query.slug.slice(1);
   return (
     <Layout title={title} description="printcart catalog website.">
-      <Flex>
-        <LayeredNavigation categories={categories} tags={tags} query={query} />
-        <Box>
+      <Flex w="100%" flexWrap="wrap">
+        <Box
+          width={{
+            base: "100%",
+            md: "20%",
+          }}
+          px={4}
+        >
+          <LayeredNavigation
+            categories={categories}
+            tags={tags}
+            query={query}
+          />
+        </Box>
+        <Box
+          width={{
+            base: "100%",
+            md: "80%",
+          }}
+          px={4}
+        >
           <Scene title="" align="end">
             {!loading && products && (
               <SimpleGrid
@@ -113,6 +131,7 @@ const CategoryPage = ({ products, categories, tags, query, loading }: any) => {
                 p={2}
                 alignItems="stretch"
                 as="section"
+                w="100%"
               >
                 {products.data.map((product: any) => (
                   <ProductCard data={product} key={product.id} />
@@ -127,6 +146,7 @@ const CategoryPage = ({ products, categories, tags, query, loading }: any) => {
                 p={2}
                 alignItems="stretch"
                 as="section"
+                w="100%"
               >
                 {defaultProducts.map((product: any) => (
                   <Skeleton key={product.id}>

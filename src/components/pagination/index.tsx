@@ -1,4 +1,4 @@
-import { PaginationProps } from "@types/all-types";
+import { PaginationProps } from "@appTypes/all-types";
 import Router from "next/router";
 import ReactPaginate from "react-paginate";
 import styles from "./styles.module.css";

@@ -2,7 +2,7 @@ export type NavItemProps = {
   name: string;
   url: string;
   childs: any;
-  root?: string;
+  root?: string | undefined;
 };
 
 export type PaginationProps = {

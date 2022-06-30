@@ -164,6 +164,7 @@ const Homepage = ({ products, categories, query, loading }: any) => {
               p={2}
               alignItems="stretch"
               as="section"
+              w="100%"
             >
               {products.data.map((product: any) => (
                 <ProductCard data={product} key={product.id} />
@@ -226,6 +227,7 @@ const Homepage = ({ products, categories, query, loading }: any) => {
               p={2}
               alignItems="stretch"
               as="section"
+              w="100%"
             >
               {categories.data.map((category: any) => (
                 <FeatureCategory data={category} key={category.id} />

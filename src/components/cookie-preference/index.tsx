@@ -18,40 +18,41 @@ export default function CookiePreference() {
 
   return (
     <>
-      !isSSR && !cookies.cookiePreference && (
-      <Stack
-        p="4"
-        borderRadius="sm"
-        pos="fixed"
-        bottom={0}
-        zIndex="1"
-        bg="gray.100"
-        width="100%"
-      >
-        <Stack direction="row" alignItems="center">
-          <Text fontWeight="semibold">Your Privacy</Text>
-          <FcLock />
-        </Stack>
-
+      {!isSSR && !cookies.cookiePreference && (
         <Stack
-          direction={{ base: "column", md: "row" }}
-          justifyContent="space-between"
+          p="4"
+          borderRadius="sm"
+          pos="fixed"
+          bottom={0}
+          zIndex="1"
+          bg="gray.100"
+          width="100%"
         >
-          <Text fontSize={{ base: "sm" }} textAlign={"left"}>
-            We use cookies and similar technologies to help personalise content,
-            tailor and measure ads, and provide a better experience. By clicking
-            OK or turning an option on in Cookie Preferences, you agree to this,
-            as outlined in our Cookie Policy. To change preferences or withdraw
-            consent, please update your Cookie Preferences.
-          </Text>
-          <Stack direction={{ base: "column", md: "row" }}>
-            <Button colorScheme="green" onClick={buttonHandler}>
-              OK
-            </Button>
+          <Stack direction="row" alignItems="center">
+            <Text fontWeight="semibold">Your Privacy</Text>
+            <FcLock />
+          </Stack>
+
+          <Stack
+            direction={{ base: "column", md: "row" }}
+            justifyContent="space-between"
+          >
+            <Text fontSize={{ base: "sm" }} textAlign={"left"}>
+              We use cookies and similar technologies to help personalise
+              content, tailor and measure ads, and provide a better experience.
+              By clicking OK or turning an option on in Cookie Preferences, you
+              agree to this, as outlined in our Cookie Policy. To change
+              preferences or withdraw consent, please update your Cookie
+              Preferences.
+            </Text>
+            <Stack direction={{ base: "column", md: "row" }}>
+              <Button colorScheme="green" onClick={buttonHandler}>
+                OK
+              </Button>
+            </Stack>
           </Stack>
         </Stack>
-      </Stack>
-      )
+      )}
     </>
   );
 }

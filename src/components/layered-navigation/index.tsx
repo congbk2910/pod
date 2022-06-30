@@ -123,7 +123,7 @@ const SidebarContent = ({
     <Box
       bg={useColorModeValue("white", "gray.900")}
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 60 }}
+      w={{ base: "full", md: "100%" }}
       h="full"
       {...rest}
     >
@@ -137,7 +137,7 @@ const SidebarContent = ({
         <CloseButton onClick={onClose} />
       </Flex>
       {query.tag && (
-        <>
+        <Box py="8">
           <Box>
             <strong>Now Shopping by:</strong>
             <List spacing={3}>
@@ -175,7 +175,7 @@ const SidebarContent = ({
               Clear All
             </Link>
           </Box>
-        </>
+        </Box>
       )}
       <strong>Shopping Options</strong>
       <Accordion defaultIndex={[0, 1]} allowMultiple={true}>

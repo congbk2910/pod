@@ -1,34 +1,34 @@
 import React from "react";
 
+import { useFetchCategories } from "@api/catalog";
+import {
+  ChevronDownIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+  CloseIcon,
+  HamburgerIcon,
+} from "@chakra-ui/icons";
 import {
   Box,
-  Flex,
-  Text,
-  IconButton,
   Button,
-  Stack,
   Collapse,
+  Flex,
   Icon,
+  IconButton,
   Link,
   Popover,
   PopoverContent,
+  Stack,
+  Text,
   useColorModeValue,
   useDisclosure,
   usePopoverContext,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronUpIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
-import ThemeButton from "../theme-button";
-import Logo from "../logo";
-import { useFetchCategories } from "@api/catalog";
-import { toast } from "react-toastify";
-import { NavItemProps } from "@types/all-types";
+import { NavItemProps } from "@appTypes/all-types";
 import NextLink from "next/link";
+import { toast } from "react-toastify";
+import Logo from "../logo";
+import ThemeButton from "../theme-button";
 
 interface PopoverTriggerProps {
   /**

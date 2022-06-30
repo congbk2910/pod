@@ -62,14 +62,15 @@ const MainLayout = ({ children }: PropsWithChildren) => {
       <Box as="main" pt={"62px"}>
         {slug && (
           <MotionContainer
+            px={4}
+            my={2}
+            maxW="7xl"
             display="flex"
-            px={{ base: 4, lg: 0 }}
             overflow="hidden"
             initial="hidden"
             animate="enter"
             exit="exit"
             variants={variants}
-            centerContent
           >
             <PageBreadcrumb slug={slug} />
           </MotionContainer>

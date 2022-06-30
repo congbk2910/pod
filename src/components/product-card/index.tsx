@@ -8,6 +8,7 @@ import {
   useColorModeValue as mode,
   VStack,
   Flex,
+  Box,
 } from "@chakra-ui/react";
 import {
   DARK_CARD_COLOR,
@@ -32,12 +33,34 @@ const ProductCard = ({ data }: any) => {
         transitionDuration="slow"
         transitionTimingFunction="ease-out"
         _hover={{ transform: "scale(1.05, 1.05)" }}
+        w="100%"
       >
-        <Image
-          alt={`Thumbnail of ${data.product_image.alt}`}
-          src={data.product_image.url}
-          fallback={<Skeleton w="full" h="full" />}
-        />
+        <Flex pos="relative" w="100%" h="0" pb="100%" justifyContent="center">
+          <Image
+            h={
+              data.product_image.height > data.product_image.width
+                ? "100%"
+                : "auto"
+            }
+            w={
+              data.product_image.height > data.product_image.width
+                ? "auto"
+                : "100%"
+            }
+            top={
+              data.product_image.width > data.product_image.height ? "50%" : "0"
+            }
+            transform={
+              data.product_image.width > data.product_image.height
+                ? "translateY(-50%)"
+                : "translateY(0)"
+            }
+            pos="absolute"
+            alt={`Thumbnail of ${data.product_image.alt}`}
+            src={data.product_image.url}
+            fallback={<Skeleton w="full" h="full" />}
+          />
+        </Flex>
         <VStack p={3} spacing={1} alignItems="flex-start" flex={1} w="full">
           <LinkOverlay href={data.url} isExternal w="full">
             <Heading

@@ -1,4 +1,4 @@
-import { Container, ContainerProps, Heading } from "@chakra-ui/react";
+import { Container, ContainerProps, Heading, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { PropsWithChildren } from "react";
 import { NextSeo } from "next-seo";
@@ -33,7 +33,7 @@ const Layout = ({ children, title, description }: LayoutProps) => {
   return (
     <>
       <NextSeo
-        title={title + " | Printcart Catalog"}
+        title={title ? title : "Home" + " | Printcart Catalog"}
         description={description}
         additionalLinkTags={[
           {
@@ -54,7 +54,10 @@ const Layout = ({ children, title, description }: LayoutProps) => {
         variants={variants}
         centerContent
       >
-        <Heading>{title}</Heading>
+        <Box w="100%" px={4} mb={4}>
+          <Heading>{title}</Heading>
+        </Box>
+
         {children}
       </MotionContainer>
     </>
