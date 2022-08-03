@@ -169,7 +169,7 @@ const CategoryPage = ({ products, categories, tags, query, loading }: any) => {
 };
 
 export async function getServerSideProps({ query }: any) {
-  const baseUrl = "http://localhost:8001/v1/catalog";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_API_URL + "catalog";
   const [requestProduct, requestCategory, requestTag] = await Promise.all([
     fetch(
       `${baseUrl}?cat=${query.slug}${

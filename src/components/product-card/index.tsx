@@ -18,6 +18,7 @@ import {
   LIGHT_BLACK_COLOR,
   DARK_BLACK_COLOR,
 } from "src/constants";
+import NextLink from "next/link";
 
 const ProductCard = ({ data }: any) => {
   return (
@@ -36,41 +37,47 @@ const ProductCard = ({ data }: any) => {
         w="100%"
       >
         <Flex pos="relative" w="100%" h="0" pb="100%" justifyContent="center">
-          <Image
-            h={
-              data.product_image.height > data.product_image.width
-                ? "100%"
-                : "auto"
-            }
-            w={
-              data.product_image.height > data.product_image.width
-                ? "auto"
-                : "100%"
-            }
-            top={
-              data.product_image.width > data.product_image.height ? "50%" : "0"
-            }
-            transform={
-              data.product_image.width > data.product_image.height
-                ? "translateY(-50%)"
-                : "translateY(0)"
-            }
-            pos="absolute"
-            alt={`Thumbnail of ${data.product_image.alt}`}
-            src={data.product_image.url}
-            fallback={<Skeleton w="full" h="full" />}
-          />
+          {data.product_image && (
+            <Image
+              h={
+                data.product_image.height > data.product_image.width
+                  ? "100%"
+                  : "auto"
+              }
+              w={
+                data.product_image.height > data.product_image.width
+                  ? "auto"
+                  : "100%"
+              }
+              top={
+                data.product_image.width > data.product_image.height
+                  ? "50%"
+                  : "0"
+              }
+              transform={
+                data.product_image.width > data.product_image.height
+                  ? "translateY(-50%)"
+                  : "translateY(0)"
+              }
+              pos="absolute"
+              alt={`Thumbnail of ${data.product_image.alt}`}
+              src={data.product_image.url}
+              fallback={<Skeleton w="full" h="full" />}
+            />
+          )}
         </Flex>
         <VStack p={3} spacing={1} alignItems="flex-start" flex={1} w="full">
-          <LinkOverlay href={data.url} isExternal w="full">
-            <Heading
-              isTruncated
-              size="md"
-              color={mode(LIGHT_BLACK_COLOR, DARK_BLACK_COLOR)}
-            >
-              {data.name}
-            </Heading>
-          </LinkOverlay>
+          <NextLink href={data.url} passHref>
+            <LinkOverlay w="full">
+              <Heading
+                isTruncated
+                size="md"
+                color={mode(LIGHT_BLACK_COLOR, DARK_BLACK_COLOR)}
+              >
+                {data.name}
+              </Heading>
+            </LinkOverlay>
+          </NextLink>
           <Text fontSize="sm" noOfLines={4} w="100%">
             {data.note}
           </Text>

@@ -244,7 +244,7 @@ const Homepage = ({ products, categories, query, loading }: any) => {
 };
 
 export async function getServerSideProps({ query }: any) {
-  const baseUrl = "http://localhost:8001/v1/catalog";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_API_URL + "catalog";
   const [requestProduct, requestCategory] = await Promise.all([
     fetch(`${baseUrl}?limit=6`),
     fetch(`${baseUrl}/categories`),
@@ -253,6 +253,7 @@ export async function getServerSideProps({ query }: any) {
     requestProduct.json(),
     requestCategory.json(),
   ]);
+
   return { props: { products, categories, query } };
 }
 
