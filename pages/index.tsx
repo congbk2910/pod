@@ -1,5 +1,4 @@
 import Layout from "@components/layout";
-import Search from "@components/search";
 import ProductCard from "@components/product-card";
 import Scene from "@components/scene";
 import Banner from "@components/banner";
@@ -20,10 +19,6 @@ import {
 const Homepage = ({ products, categories, query, loading }: any) => {
   return (
     <Layout title="" description="printcart catalog website.">
-      <Container pt={15}>
-        <Search />
-      </Container>
-
       <Container maxW={"7xl"} py={10}>
         <Banner />
       </Container>

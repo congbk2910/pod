@@ -153,11 +153,21 @@ export default function Header() {
 }
 
 const DesktopNav = ({ data }: any) => {
+  let navItems = [
+    {
+      name: "All Products",
+      url: "all-products",
+      childs: "",
+    },
+  ];
+
+  if (data && data.data.length) navItems = navItems.concat(data?.data);
+
   const NAV_ITEMS: Array<NavItemProps> = [
     {
       name: "Catalog",
       url: "",
-      childs: data?.data,
+      childs: navItems,
       root: "1",
     },
     {
